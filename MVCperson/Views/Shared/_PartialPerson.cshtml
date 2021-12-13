@@ -1,0 +1,23 @@
+﻿@model Person
+
+<div class="row">
+    <div class="col">
+        @Model.Name
+    </div>
+    <div class="col">
+        @Model.Phone
+    </div>
+    <div class="col">
+        @Model.City
+    </div>
+    <div class="col">
+        <a href="#" onclick="location.href =
+            '@Url.Action("RemovePerson","Person", new { id=Model.PersonId })'">Delete</a>
+    </div>
+</div>
+
+@*<td>
+    <a href="#" onclick="location.href =
+    var url '@Url.Action("RemovePerson","Person")?id=' + $(this)..... });'">Delete</a>
+</td>*@
+

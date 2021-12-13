@@ -1,0 +1,50 @@
+﻿@model PeopleViewModel
+@{
+    ViewData["Title"] = "Yo!";
+}
+
+<div class="container">
+    <div>
+        <form asp-controller="Person" asp-action="Index" method="post">
+            @Html.AntiForgeryToken()
+            <input type="submit" value="    Search     " />&emsp;
+            <input type="text" name="SearchString" />
+        </form>
+        <br />
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        <form asp-controller="Person" asp-action="AddNewPerson" method="post">
+            @Html.AntiForgeryToken()
+            <input type="submit" value=" Add Person " />&emsp;
+            <input type="text" name="name" />
+            <span style="color:red" asp-validation-for="Name"></span>
+            <label for="html">Name</label><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;
+            <input type="text" name="phone" />
+            <span style="color:red" asp-validation-for="Phone"></span>
+            <label for="html">Phone</label><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;
+            <input type="text" name="city" />
+            <span style="color:red" asp-validation-for="City"></span>
+            <label for="html">City</label>
+        </form>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>City</th>
+                <th>Operation</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<div class="container">
+    @foreach (var person in Model.PersonsList)
+    {
+        <partial name="_partialPerson" model="person" />
+    }
+</div>
